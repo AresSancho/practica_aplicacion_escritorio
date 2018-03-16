@@ -7,6 +7,7 @@ public class Cliente {
 	private String poblacion;
 	private String codigoPostal;
 	private String telefono;
+	private int id;
 	
 	public Cliente() {
 	}//end Cliente
@@ -20,6 +21,14 @@ public class Cliente {
 		this.codigoPostal = codigoPostal;
 		this.telefono = telefono;
 	}//end Cliente
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
 
 	public String getNombre() {
 		return nombre;

@@ -49,9 +49,17 @@ public class ClientesDAOImpl implements ClientesDAO{
 
 	@Override
 	public void borrarCliente(int id) {
-		// TODO Auto-generated method stub
-		
-	}
+		try {
+			PreparedStatement ps = miConexion.prepareStatement(
+					ConstantesSQL.sqlBorradoCliente);
+			ps.setInt(1, id);
+			ps.execute();
+			ps.close();			
+		} catch (SQLException e) {
+			System.out.println("la sql de borrado esta mal");
+			System.out.println(e.getMessage());
+		}
+	}//end borrarCliente
 
 	@Override
 	public Cliente[] obtenerClientes() {
@@ -73,6 +81,7 @@ public class ClientesDAOImpl implements ClientesDAO{
 				c.setCodigoPostal(resultado.getString("codigo_postal"));
 				c.setPoblacion(resultado.getString("poblacion"));
 				c.setTelefono(resultado.getString("telefono"));
+				c.setId(resultado.getInt("id"));
 				listClientes.add(c);
 			}//end while
 			//transformar de list a array
